@@ -14,8 +14,7 @@ public class Customer {
     private CustomerStatus status;
 
     public Customer(CustomerId id, String cpfHash, String cpfLast4,
-                    String fullName, String email, CustomerStatus status,
-                    Instant createdAt, Instant updatedAt) {
+                    String fullName, String email, CustomerStatus status) {
         this.id = Objects.requireNonNull(id);
         this.cpfHash = Objects.requireNonNull(cpfHash);
         this.cpfLast4 = Objects.requireNonNull(cpfLast4);
