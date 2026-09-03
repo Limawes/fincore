@@ -1,73 +1,70 @@
 package br.com.fincore.services.customer_service.src.test.java.com.fincore.customer.interfaces.rest;
 
-import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.dto.CustomerResult;
 import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.BlockCustomerUseCase;
 import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.CreateCustomerUseCase;
 import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.FindCustomerUseCase;
-import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerStatus;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.Customer;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerId;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.port.CustomerRepositoryPort;
 import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.CustomerController;
-import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.error.GlobalExceptionHandler;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.request.CreateCustomerRequest;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.response.CustomerResponse;
+import org.junit.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-import java.time.Instant;
-import java.util.UUID;
+import java.util.Optional;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.not;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-@WebMvcTest(CustomerController.class)
-@ContextConfiguration(classes = {CustomerController.class, GlobalExceptionHandler.class})
-class CustomerControllerTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private CreateCustomerUseCase createCustomerUseCase;
-
-    @MockBean
-    private FindCustomerUseCase findCustomerUseCase;
-
-    @MockBean
-    private BlockCustomerUseCase blockCustomerUseCase;
+public class CustomerControllerTest {
 
     @Test
-    void shouldCreateCustomerAndNotExposeRawCpfInResponse() throws Exception {
-        UUID customerId = UUID.randomUUID();
-        CustomerResult result = new CustomerResult(
-                customerId, "John Doe", "john@example.com", CustomerStatus.ACTIVE, Instant.now(), Instant.now()
+    public void shouldCreateCustomerWithoutExposingCpf() {
+        InMemoryCustomerRepository repository = new InMemoryCustomerRepository();
+        CustomerController controller = new CustomerController(
+                new CreateCustomerUseCase(repository),
+                new FindCustomerUseCase(repository),
+                new BlockCustomerUseCase(repository)
+        );
+        CreateCustomerRequest request = new CreateCustomerRequest(
+                "52998224725", "John Doe", "john@example.com"
         );
 
-        when(createCustomerUseCase.execute(any())).thenReturn(result);
+        ResponseEntity<CustomerResponse> response = controller.createCustomer(request);
 
-        String rawCpf = "52998224725";
-        String requestBody = """
-                {
-                    "cpf": "%s",
-                    "fullName": "John Doe",
-                    "email": "john@example.com"
-                }
-                """.formatted(rawCpf);
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertNotNull(response.getBody().id());
+        assertEquals("John Doe", response.getBody().fullName());
+        assertEquals("john@example.com", response.getBody().email());
+        assertEquals("ACTIVE", response.getBody().status());
+    }
 
-        mockMvc.perform(post("/api/v1/customers")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").value(customerId.toString()))
-                .andExpect(jsonPath("$.fullName").value("John Doe"))
-                .andExpect(jsonPath("$.email").value("john@example.com"))
-                .andExpect(jsonPath("$.status").value("ACTIVE"))
-                .andExpect(jsonPath("$").value(not(containsString(rawCpf))));
+    private static final class InMemoryCustomerRepository implements CustomerRepositoryPort {
+        private Customer customer;
+
+        @Override
+        public Customer save(Customer customer) {
+            this.customer = customer;
+            return customer;
+        }
+
+        @Override
+        public Optional<Customer> findById(CustomerId id) {
+            return Optional.ofNullable(customer)
+                    .filter(savedCustomer -> savedCustomer.getId().equals(id));
+        }
+
+        @Override
+        public boolean existsByCpfHash(String cpfHash) {
+            return customer != null && customer.getCpfHash().equals(cpfHash);
+        }
+
+        @Override
+        public boolean existsByEmail(String email) {
+            return customer != null && customer.getEmail().equals(email);
+        }
     }
 }

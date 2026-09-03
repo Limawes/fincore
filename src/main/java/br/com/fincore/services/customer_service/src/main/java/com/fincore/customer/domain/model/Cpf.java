@@ -51,18 +51,24 @@ public final class Cpf {
         int sum = 0;
         int weight = 10;
 
-        for (int i = 0; i < cpf.length() - 1; i++) {
+        for (int i = 0; i < 9; i++) {
             sum += Integer.parseInt(String.valueOf(cpf.charAt(i))) * weight--;
         }
         int digit1 = (sum * 10) % 11;
+        if (digit1 == 10) {
+            digit1 = 0;
+        }
 
         sum = 0;
         weight = 11;
 
-        for (int i = 0; i < cpf.length() - 1; i++) {
+        for (int i = 0; i < 10; i++) {
             sum += Integer.parseInt(String.valueOf(cpf.charAt(i))) * weight--;
         }
         int digit2 = (sum * 10) % 11;
+        if (digit2 == 10) {
+            digit2 = 0;
+        }
 
         return digit1 == Integer.parseInt(String.valueOf(cpf.charAt(9)))
                 && digit2 == Integer.parseInt(String.valueOf(cpf.charAt(10)));

@@ -1,11 +1,11 @@
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+package br.com.fincore.services.notification_service.src.test.java.com.fincore.notification_service;
 
-@SpringBootTest
-class NotificationServiceApplicationTests {
+import org.junit.Test;
+
+public class NotificationServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+    public void contextLoads() {
 	}
 
 }

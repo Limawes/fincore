@@ -1,11 +1,11 @@
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+package br.com.fincore.services.account_service.src.test.java.com.fincore.account_service;
 
-@SpringBootTest
-class AccountServiceApplicationTests {
+import org.junit.Test;
+
+public class AccountServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
 
 }

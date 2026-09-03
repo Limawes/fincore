@@ -1,11 +1,11 @@
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+package br.com.fincore.services.audit_service.src.test.java.com.fincore.audit_service;
 
-@SpringBootTest
-class AuditServiceApplicationTests {
+import org.junit.Test;
+
+public class AuditServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
 
 }

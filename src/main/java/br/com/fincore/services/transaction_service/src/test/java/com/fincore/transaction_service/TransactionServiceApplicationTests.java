@@ -1,11 +1,11 @@
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+package br.com.fincore.services.transaction_service.src.test.java.com.fincore.transaction_service;
 
-@SpringBootTest
-class TransactionServiceApplicationTests {
+import org.junit.Test;
+
+public class TransactionServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
 
 }

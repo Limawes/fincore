@@ -5,36 +5,25 @@ import br.com.fincore.services.customer_service.src.main.java.com.fincore.custom
 import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.CreateCustomerUseCase;
 import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.exception.DuplicateCustomerException;
 import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.Customer;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerId;
 import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerStatus;
 import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.port.CustomerRepositoryPort;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import java.util.Optional;
 
-class CreateCustomerUseCaseTest {
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertEquals;
 
-    private CustomerRepositoryPort repositoryPort;
-    private CreateCustomerUseCase useCase;
-
-    @BeforeEach
-    void setUp() {
-        repositoryPort = Mockito.mock(CustomerRepositoryPort.class);
-        useCase = new CreateCustomerUseCase(repositoryPort);
-    }
+public class CreateCustomerUseCaseTest {
 
     @Test
-    void shouldCreateCustomerSuccessfully() {
+    public void shouldCreateCustomerSuccessfully() {
+        InMemoryCustomerRepository repository = new InMemoryCustomerRepository();
+        CreateCustomerUseCase useCase = new CreateCustomerUseCase(repository);
         CreateCustomerCommand command = new CreateCustomerCommand("52998224725", "Jane Doe", "jane@example.com");
-
-        when(repositoryPort.existsByCpfHash(any())).thenReturn(false);
-        when(repositoryPort.existsByEmail("jane@example.com")).thenReturn(false);
-        when(repositoryPort.save(any(Customer.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         CustomerResult result = useCase.execute(command);
 
@@ -42,14 +31,55 @@ class CreateCustomerUseCaseTest {
         assertEquals("Jane Doe", result.fullName());
         assertEquals("jane@example.com", result.email());
         assertEquals(CustomerStatus.ACTIVE, result.status());
+        assertNotNull(repository.savedCustomer);
     }
 
     @Test
-    void shouldRejectDuplicateCpf() {
+    public void shouldRejectDuplicateCpf() {
+        InMemoryCustomerRepository repository = new InMemoryCustomerRepository();
+        repository.cpfAlreadyExists = true;
+        CreateCustomerUseCase useCase = new CreateCustomerUseCase(repository);
         CreateCustomerCommand command = new CreateCustomerCommand("52998224725", "Jane Doe", "jane@example.com");
 
-        when(repositoryPort.existsByCpfHash(any())).thenReturn(true);
+        assertThrows(DuplicateCustomerException.class, () -> useCase.execute(command));
+        assertNull(repository.savedCustomer);
+    }
+
+    @Test
+    public void shouldRejectDuplicateEmail() {
+        InMemoryCustomerRepository repository = new InMemoryCustomerRepository();
+        repository.emailAlreadyExists = true;
+        CreateCustomerUseCase useCase = new CreateCustomerUseCase(repository);
+        CreateCustomerCommand command = new CreateCustomerCommand("52998224725", "Jane Doe", "jane@example.com");
 
         assertThrows(DuplicateCustomerException.class, () -> useCase.execute(command));
+        assertNull(repository.savedCustomer);
+    }
+
+    private static final class InMemoryCustomerRepository implements CustomerRepositoryPort {
+        private boolean cpfAlreadyExists;
+        private boolean emailAlreadyExists;
+        private Customer savedCustomer;
+
+        @Override
+        public Customer save(Customer customer) {
+            savedCustomer = customer;
+            return customer;
+        }
+
+        @Override
+        public Optional<Customer> findById(CustomerId id) {
+            return Optional.empty();
+        }
+
+        @Override
+        public boolean existsByCpfHash(String cpfHash) {
+            return cpfAlreadyExists;
+        }
+
+        @Override
+        public boolean existsByEmail(String email) {
+            return emailAlreadyExists;
+        }
     }
 }
