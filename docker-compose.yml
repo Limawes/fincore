@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: fincore-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: fincore_db
+      POSTGRES_USER: fincore_user
+      POSTGRES_PASSWORD: fincore_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fincore_user -d fincore_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
