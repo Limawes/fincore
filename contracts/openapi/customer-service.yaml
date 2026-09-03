@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Customer Service API
+  description: Service responsible for customer management in FinCore.
+  version: 1.0.0
+paths:
+  /api/v1/customers:
+    post:
+      summary: Register a new customer
+      operationId: createCustomer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerRequest'
+      responses:
+        '201':
+          description: Customer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Bad request / validation error
+        '409':
+          description: Customer already exists (CPF or Email duplicate)
+        '422':
+          description: Invalid CPF or business unprocessable entity
+
+  /api/v1/customers/{id}:
+    get:
+      summary: Retrieve customer by ID
+      operationId: getCustomer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Customer found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '404':
+          description: Customer not found
+
+components:
+  schemas:
+    CreateCustomerRequest:
+      type: object
+      required:
+        - cpf
+        - fullName
+        - email
+      properties:
+        cpf:
+          type: string
+          example: "12345678909"
+        fullName:
+          type: string
+          example: "John Doe"
+        email:
+          type: string
+          format: email
+          example: "john.doe@example.com"
+
+    CustomerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        fullName:
+          type: string
+        email:
+          type: string
+        status:
+          type: string
+          enum: [ACTIVE, BLOCKED]
+        createdAt:
+          type: string
+          format: date-time

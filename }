@@ -1,0 +1,11 @@
+- **Responses**:
+  - `201 Created`: Cliente criado.
+  - `400 Bad Request`: Dados ausentes ou inválidos.
+  - `409 Conflict`: CPF ou E-mail já cadastrado.
+  - `422 Unprocessable Entity`: CPF sintaticamente inválido.
+
+### 2. Consultar Cliente
+- **GET** `/api/v1/customers/{id}`
+- **Responses**:
+  - `200 OK`: Cliente encontrado.
+  - `404 Not Found`: Cliente não localizado.
