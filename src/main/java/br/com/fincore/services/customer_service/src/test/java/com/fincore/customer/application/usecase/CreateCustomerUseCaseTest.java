@@ -1,11 +1,12 @@
-package com.fincore.customer.application.usecase;
+package br.com.fincore.services.customer_service.src.test.java.com.fincore.customer.application.usecase;
 
-import com.fincore.customer.application.dto.CreateCustomerCommand;
-import com.fincore.customer.application.dto.CustomerResult;
-import com.fincore.customer.domain.exception.DuplicateCustomerException;
-import com.fincore.customer.domain.model.Customer;
-import com.fincore.customer.domain.model.CustomerStatus;
-import com.fincore.customer.domain.port.CustomerRepositoryPort;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.dto.CreateCustomerCommand;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.dto.CustomerResult;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.CreateCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.exception.DuplicateCustomerException;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.Customer;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerStatus;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.port.CustomerRepositoryPort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -1,11 +1,11 @@
-package com.fincore.customer.interfaces.rest;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest;
 
-import com.fincore.customer.application.dto.CustomerResult;
-import com.fincore.customer.application.usecase.BlockCustomerUseCase;
-import com.fincore.customer.application.usecase.CreateCustomerUseCase;
-import com.fincore.customer.application.usecase.FindCustomerUseCase;
-import com.fincore.customer.interfaces.rest.request.CreateCustomerRequest;
-import com.fincore.customer.interfaces.rest.response.CustomerResponse;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.dto.CustomerResult;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.BlockCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.CreateCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.FindCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.request.CreateCustomerRequest;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.response.CustomerResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

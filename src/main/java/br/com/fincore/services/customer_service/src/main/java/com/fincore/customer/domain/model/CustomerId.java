@@ -1,4 +1,4 @@
-package com.fincore.customer.domain.model;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model;
 
 import java.util.Objects;
 import java.util.UUID;

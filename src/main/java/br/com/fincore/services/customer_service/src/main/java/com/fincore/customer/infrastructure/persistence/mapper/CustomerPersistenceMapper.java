@@ -1,9 +1,9 @@
-package com.fincore.customer.infrastructure.persistence.mapper;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.infrastructure.persistence.mapper;
 
-import com.fincore.customer.domain.model.Customer;
-import com.fincore.customer.domain.model.CustomerId;
-import com.fincore.customer.domain.model.CustomerStatus;
-import com.fincore.customer.infrastructure.persistence.entity.CustomerJpaEntity;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.Customer;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerId;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerStatus;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.infrastructure.persistence.entity.CustomerJpaEntity;
 
 public class CustomerPersistenceMapper {
 

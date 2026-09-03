@@ -1,7 +1,7 @@
-package com.fincore.customer.application.dto;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.dto;
 
-import com.fincore.customer.domain.model.Customer;
-import com.fincore.customer.domain.model.CustomerStatus;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.Customer;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerStatus;
 
 import java.time.Instant;
 import java.util.UUID;

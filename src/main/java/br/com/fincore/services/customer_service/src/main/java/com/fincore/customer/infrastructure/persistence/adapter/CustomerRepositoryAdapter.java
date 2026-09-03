@@ -1,11 +1,11 @@
-package com.fincore.customer.infrastructure.persistence.adapter;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.infrastructure.persistence.adapter;
 
-import com.fincore.customer.domain.model.Customer;
-import com.fincore.customer.domain.model.CustomerId;
-import com.fincore.customer.domain.port.CustomerRepositoryPort;
-import com.fincore.customer.infrastructure.persistence.entity.CustomerJpaEntity;
-import com.fincore.customer.infrastructure.persistence.mapper.CustomerPersistenceMapper;
-import com.fincore.customer.infrastructure.persistence.repository.SpringDataCustomerRepository;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.Customer;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerId;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.port.CustomerRepositoryPort;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.infrastructure.persistence.entity.CustomerJpaEntity;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.infrastructure.persistence.mapper.CustomerPersistenceMapper;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.infrastructure.persistence.repository.SpringDataCustomerRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

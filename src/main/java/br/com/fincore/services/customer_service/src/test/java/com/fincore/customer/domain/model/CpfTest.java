@@ -1,6 +1,7 @@
-package com.fincore.customer.domain.model;
+package br.com.fincore.services.customer_service.src.test.java.com.fincore.customer.domain.model;
 
-import com.fincore.customer.domain.exception.InvalidCpfException;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.exception.InvalidCpfException;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.Cpf;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

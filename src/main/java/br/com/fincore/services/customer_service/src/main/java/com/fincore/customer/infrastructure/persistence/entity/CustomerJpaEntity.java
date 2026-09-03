@@ -1,4 +1,4 @@
-package com.fincore.customer.infrastructure.persistence.entity;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.infrastructure.persistence.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

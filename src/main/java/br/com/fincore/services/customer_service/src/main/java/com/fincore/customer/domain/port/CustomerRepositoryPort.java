@@ -1,7 +1,8 @@
-package com.fincore.customer.domain.port;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.port;
 
-import com.fincore.customer.domain.model.Customer;
-import com.fincore.customer.domain.model.CustomerId;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.Customer;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerId;
+
 
 import java.util.Optional;
 

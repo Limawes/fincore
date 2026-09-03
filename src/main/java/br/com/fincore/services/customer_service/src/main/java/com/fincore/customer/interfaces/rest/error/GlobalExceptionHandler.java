@@ -1,8 +1,8 @@
-package com.fincore.customer.interfaces.rest.error;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.error;
 
-import com.fincore.customer.domain.exception.CustomerNotFoundException;
-import com.fincore.customer.domain.exception.DuplicateCustomerException;
-import com.fincore.customer.domain.exception.InvalidCpfException;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.exception.CustomerNotFoundException;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.exception.DuplicateCustomerException;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.exception.InvalidCpfException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;

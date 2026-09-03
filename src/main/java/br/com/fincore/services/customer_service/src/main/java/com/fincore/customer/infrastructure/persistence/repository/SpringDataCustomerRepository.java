@@ -1,6 +1,6 @@
-package com.fincore.customer.infrastructure.persistence.repository;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.infrastructure.persistence.repository;
 
-import com.fincore.customer.infrastructure.persistence.entity.CustomerJpaEntity;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.infrastructure.persistence.entity.CustomerJpaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

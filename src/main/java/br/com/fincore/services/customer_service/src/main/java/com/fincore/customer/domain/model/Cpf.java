@@ -1,6 +1,6 @@
-package com.fincore.customer.domain.model;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model;
 
-import com.fincore.customer.domain.exception.InvalidCpfException;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.exception.InvalidCpfException;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

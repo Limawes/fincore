@@ -1,6 +1,6 @@
-package com.fincore.customer.interfaces.rest.response;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.response;
 
-import com.fincore.customer.application.dto.CustomerResult;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.dto.CustomerResult;
 
 import java.time.Instant;
 import java.util.UUID;

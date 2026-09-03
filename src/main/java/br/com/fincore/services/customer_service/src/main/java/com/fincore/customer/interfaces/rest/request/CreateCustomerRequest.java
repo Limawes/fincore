@@ -1,6 +1,6 @@
-package com.fincore.customer.interfaces.rest.request;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.request;
 
-import com.fincore.customer.application.dto.CreateCustomerCommand;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.dto.CreateCustomerCommand;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

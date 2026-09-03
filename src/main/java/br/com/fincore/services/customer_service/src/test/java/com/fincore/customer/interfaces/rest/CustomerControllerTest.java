@@ -1,11 +1,12 @@
-package com.fincore.customer.interfaces.rest;
+package br.com.fincore.services.customer_service.src.test.java.com.fincore.customer.interfaces.rest;
 
-import com.fincore.customer.application.dto.CustomerResult;
-import com.fincore.customer.application.usecase.BlockCustomerUseCase;
-import com.fincore.customer.application.usecase.CreateCustomerUseCase;
-import com.fincore.customer.application.usecase.FindCustomerUseCase;
-import com.fincore.customer.domain.model.CustomerStatus;
-import com.fincore.customer.interfaces.rest.error.GlobalExceptionHandler;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.dto.CustomerResult;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.BlockCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.CreateCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.FindCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerStatus;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.CustomerController;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.interfaces.rest.error.GlobalExceptionHandler;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

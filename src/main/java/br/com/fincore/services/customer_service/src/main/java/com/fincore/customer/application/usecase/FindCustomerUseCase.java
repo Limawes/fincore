@@ -1,9 +1,9 @@
-package com.fincore.customer.application.usecase;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase;
 
-import com.fincore.customer.application.dto.CustomerResult;
-import com.fincore.customer.domain.exception.CustomerNotFoundException;
-import com.fincore.customer.domain.model.CustomerId;
-import com.fincore.customer.domain.port.CustomerRepositoryPort;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.dto.CustomerResult;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.exception.CustomerNotFoundException;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.model.CustomerId;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.port.CustomerRepositoryPort;
 
 import java.util.UUID;
 

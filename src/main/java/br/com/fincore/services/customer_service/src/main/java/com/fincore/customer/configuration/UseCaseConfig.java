@@ -1,9 +1,9 @@
-package com.fincore.customer.configuration;
+package br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.configuration;
 
-import com.fincore.customer.application.usecase.BlockCustomerUseCase;
-import com.fincore.customer.application.usecase.CreateCustomerUseCase;
-import com.fincore.customer.application.usecase.FindCustomerUseCase;
-import com.fincore.customer.domain.port.CustomerRepositoryPort;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.BlockCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.CreateCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.application.usecase.FindCustomerUseCase;
+import br.com.fincore.services.customer_service.src.main.java.com.fincore.customer.domain.port.CustomerRepositoryPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
