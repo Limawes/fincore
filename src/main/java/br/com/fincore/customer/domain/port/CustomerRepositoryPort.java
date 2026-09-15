@@ -1,4 +1,4 @@
-package br.com.fincore;
+package br.com.fincore.customer.domain.port;
 
 import br.com.fincore.customer.domain.model.Customer;
 import br.com.fincore.customer.domain.model.CustomerId;

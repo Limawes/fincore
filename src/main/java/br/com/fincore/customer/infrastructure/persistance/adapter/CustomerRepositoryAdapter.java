@@ -1,6 +1,6 @@
 package br.com.fincore.customer.infrastructure.persistance.adapter;
 
-import br.com.fincore.CustomerRepositoryPort;
+import br.com.fincore.customer.domain.port.CustomerRepositoryPort;
 import br.com.fincore.customer.domain.model.Customer;
 import br.com.fincore.customer.domain.model.CustomerId;
 import br.com.fincore.customer.infrastructure.persistance.entity.CustomerJpaEntity;

@@ -1,6 +1,6 @@
 package br.com.fincore.customer.application;
 
-import br.com.fincore.CustomerRepositoryPort;
+import br.com.fincore.customer.domain.port.CustomerRepositoryPort;
 import br.com.fincore.customer.application.dto.CreateCustomerCommand;
 import br.com.fincore.customer.application.dto.CustomerResult;
 import br.com.fincore.customer.domain.exception.DuplicateCustomerException;
