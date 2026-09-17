@@ -1,4 +1,4 @@
-package br.com.fincore.customer.interfaces.rest;
+package br.com.fincore.customer.interfaces.rest.controller;
 
 import br.com.fincore.customer.application.CreateCustomerUseCase;
 import br.com.fincore.customer.application.dto.CustomerResult;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("api/customer/")
+@RequestMapping("/api/customer/")
 public class CustomerController {
 
     private final CreateCustomerUseCase createCustomerUseCase;

@@ -1,11 +1,9 @@
-package br.com.fincore.security;
+package br.com.fincore.security.controller;
 
-import br.com.fincore.security.domain.model.UserSite;
 import br.com.fincore.security.domain.request.UserDTO;
 import br.com.fincore.security.service.TokenService;
 import br.com.fincore.security.service.UserAuthService;
 import jakarta.validation.Valid;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

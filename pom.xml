@@ -12,7 +12,7 @@
 	<artifactId>fincore-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
-	<description/>
+    <description>O FinCore simula uma fintech responsavel por cadastro de clientes, contas digitais, transferencias, pagamentos, limites, notificacoes, auditoria, risco e processamento de eventos. O sistema deve envolver regras de negocio, concorrencia, consistencia, seguranca, tolerancia a falhas, escalabilidade e rastreabilidade. </description>
 	<url/>
 	<licenses>
 		<license/>
