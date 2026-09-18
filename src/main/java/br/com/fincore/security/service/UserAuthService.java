@@ -27,7 +27,9 @@ public class UserAuthService {
     private UserSite convertToEntity(UserDTO userDTO) {
         UserSite user = new UserSite();
         user.setEmail(userDTO.email());
-        user.setPassword(encryptPassword(userDTO.password()));
+//        user.setPassword(encryptPassword(userDTO.password()));
+        var encryptPassword = new BCryptPasswordEncoder().encode(userDTO.password());
+        user.setPassword(encryptPassword);
         user.setRole(userDTO.role());
         user.setActive(true);
 

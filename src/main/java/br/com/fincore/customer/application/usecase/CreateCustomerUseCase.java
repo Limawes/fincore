@@ -1,4 +1,4 @@
-package br.com.fincore.customer.application;
+package br.com.fincore.customer.application.usecase;
 
 import br.com.fincore.customer.domain.port.CustomerRepositoryPort;
 import br.com.fincore.customer.application.dto.CreateCustomerCommand;
